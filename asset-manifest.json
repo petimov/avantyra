@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/avantyraweb/static/css/main.440728a2.css",
-    "main.js": "/avantyraweb/static/js/main.b830deeb.js",
+    "main.css": "/avantyraweb/static/css/main.468e6f80.css",
+    "main.js": "/avantyraweb/static/js/main.635fa953.js",
     "static/media/aboutHero.webp": "/avantyraweb/static/media/aboutHero.081fbeefcde3fc3bf9d7.webp",
     "static/media/contact.webp": "/avantyraweb/static/media/contact.b92016bcab1f4298baa0.webp",
     "static/media/zakusek.webp": "/avantyraweb/static/media/zakusek.359faf0bfc55a95897f6.webp",
@@ -17,11 +17,11 @@
     "static/media/logo.png": "/avantyraweb/static/media/logo.ca866a06f896fa1638a4.png",
     "static/media/tulipan.webp": "/avantyraweb/static/media/tulipan.d06efc0b33a30dff253f.webp",
     "index.html": "/avantyraweb/index.html",
-    "main.440728a2.css.map": "/avantyraweb/static/css/main.440728a2.css.map",
-    "main.b830deeb.js.map": "/avantyraweb/static/js/main.b830deeb.js.map"
+    "main.468e6f80.css.map": "/avantyraweb/static/css/main.468e6f80.css.map",
+    "main.635fa953.js.map": "/avantyraweb/static/js/main.635fa953.js.map"
   },
   "entrypoints": [
-    "static/css/main.440728a2.css",
-    "static/js/main.b830deeb.js"
+    "static/css/main.468e6f80.css",
+    "static/js/main.635fa953.js"
   ]
 }
