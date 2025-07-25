@@ -1,0 +1,25 @@
+.banner {
+  min-height: 100vh;
+  background-color: #0b1215;
+  position: fixed;
+  top: 0;
+  width: 25vw;
+  z-index: 2;
+  transform: scaleX(1.01);
+}
+
+.banner-1 {
+  left: 0;
+}
+
+.banner-2 {
+  left: 25vw;
+}
+
+.banner-3 {
+  left: 50vw;
+}
+
+.banner-4 {
+  left: 75vw;
+}

@@ -1,0 +1,68 @@
+.content > .about > .about-hero {
+    height: 96vh;
+}
+
+.content > .about > .about-hero > img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    max-height: 97vh;
+    width: 100%;
+}
+
+.content > .about > .about-text {
+    height: 70vh;
+    background-color: #f5efe3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content > .about > .about-text > h6 {
+    font-size: 100px;
+  font-family: "MonteCarlo", cursive;
+  color: #c4a261;
+}
+
+.content > .about > .about-text > p {
+    text-align: center;
+    font-size: 32px;
+        width: 55%;
+}
+
+.content > .about > .about-us-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.content > .about > .about-us-gallery img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.content > .about > .about-us-gallery img:first-of-type {
+    margin-top: 160px;
+}
+ .about > .about-us-gallery img:nth-of-type(2) {
+    margin-top: 80px;
+ }
+
+ @media (max-width: 1000px) {
+  .content > .about > .about-text > p {
+    font-size: 24px;
+  }
+  .content > .about > .about-text {
+    height: auto;
+  }
+
+  .about-us-gallery {
+    margin: 0 auto 140px auto !important;
+  }
+}

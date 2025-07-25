@@ -1,0 +1,55 @@
+.festivals {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6vw;
+    margin: 3rem 10vw 10rem 10vw;
+}
+
+.festivals > img {
+    width: 100%;
+    aspect-ratio: inherit;
+    transition: 0.6s ease;
+    will-change: transform;
+    height: 100%;
+    object-fit: cover;
+}
+
+.festivals > img:hover {
+     transform: scale(1.02);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.festivals > .festival-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.festivals > .festival-text > h1 {
+    font-size: 100px;
+    font-family: "MonteCarlo", cursive;
+    color: 	#d4b483;
+}
+
+.festivals > .festival-text > p {
+    font-size: 20px;
+    text-align: center;
+    line-height: 2rem;
+    max-width: 80%;
+}
+
+@media only screen and (max-width: 1200px){
+    .festivals {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 660px){
+    .festivals > img {
+        aspect-ratio: 16/9;
+        height: auto;
+    }
+}

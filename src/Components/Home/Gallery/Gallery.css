@@ -1,0 +1,62 @@
+.zoom-scroll-wrapper {
+  background: #6b5b4b;
+  height: 140vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 100px;
+  gap: 2rem;
+  width: 100%;
+  transform-origin: center center;
+}
+
+.mosaic > img:first-of-type {
+  object-position: bottom;
+}
+
+
+.item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Layout same as before */
+.item1 { grid-column: 2 / span 3; grid-row: 1 / span 2; }
+.item2 { grid-column: 5 / span 4; grid-row: 2 / span 2; }
+.item3 { grid-column: 3 / span 2; grid-row: 3 / span 2; }
+.item4 { grid-column: 5 / span 2; grid-row: 4 / span 2; }
+.item5 { grid-column: 7 / span 2; grid-row: 4 / span 1; }
+.item6 { grid-column: 9 / span 2; grid-row: 1 / span 2; }
+.item7 { grid-column: 9 / span 3; grid-row: 3 / span 2; }
+
+
+
+@media only screen and (max-width: 600px){
+
+.mosaic > img:not(:nth-of-type(2)) {
+  height: auto;
+  aspect-ratio: 1/1;
+  transform: scale(2);
+}
+.mosaic > img {
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.mosaic > img:nth-of-type(4), .mosaic > img:nth-of-type(6) {
+  height: auto;
+  aspect-ratio: 1/1;
+  transform: scale(3);
+}
+
+.mosaic > img:nth-of-type(5){
+  display: none;
+}
+}

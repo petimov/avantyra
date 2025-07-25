@@ -1,0 +1,85 @@
+.home > .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8vw;
+    max-width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home > .menu > .menu-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home > .menu > .menu-flex > img {
+    width: 100%;
+    aspect-ratio: 6/7;
+    object-fit: cover;
+    object-position: bottom;
+    width: 30vw;;
+    transition: .4s ease;
+}
+
+.home > .menu > .menu-flex > .menu-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+}
+
+.home > .menu > .menu-flex > .menu-text > h3 {
+    font-size: 80px;
+    font-family: "MonteCarlo", cursive;
+    color: 	#d4b483;
+}
+
+.home > .menu > .menu-flex > .menu-text > h4 {
+    font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.home > .menu > .menu-flex > .menu-text > p {
+    font-size: 20px;
+  line-height: 2rem;
+  max-width: 80%;
+}
+
+.home > .menu > .menu-flex:last-of-type {
+    flex-direction: row-reverse;
+}
+
+.menu-image-wrapper {
+  transition: transform 0.4s ease, filter 0.4s ease;
+  width: 30vw;
+  aspect-ratio: 6/7;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+
+.menu-flex img:hover {
+  transform: scale(1.01);
+
+}
+
+@media only screen and (max-width: 1300px){
+.home > .menu > .menu-flex > .menu-text > h4 {
+  font-size: 25px;
+}
+
+.home > .menu {
+  max-width: 92vw;
+}
+}
+
+
+@media only screen and (max-width: 950px){
+.menu-flex {
+  flex-direction: column;
+}
+}
