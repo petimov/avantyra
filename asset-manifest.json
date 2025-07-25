@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/johndoe123484/avantyraweb.git/static/css/main.440728a2.css",
-    "main.js": "/johndoe123484/avantyraweb.git/static/js/main.024db3c1.js",
-    "static/media/aboutHero.webp": "/johndoe123484/avantyraweb.git/static/media/aboutHero.081fbeefcde3fc3bf9d7.webp",
-    "static/media/zakusek.webp": "/johndoe123484/avantyraweb.git/static/media/zakusek.359faf0bfc55a95897f6.webp",
-    "static/media/contact.webp": "/johndoe123484/avantyraweb.git/static/media/contact.f2f390c95d146e0ee9cb.webp",
-    "static/media/brod.webp": "/johndoe123484/avantyraweb.git/static/media/brod.cfffe254c5196b8ed85f.webp",
-    "static/media/futral.webp": "/johndoe123484/avantyraweb.git/static/media/futral.fe24bc876fea1802620e.webp",
-    "static/media/dvatulipy.webp": "/johndoe123484/avantyraweb.git/static/media/dvatulipy.de0cb9dce776cd15f966.webp",
-    "static/media/venek.webp": "/johndoe123484/avantyraweb.git/static/media/venek.19bf12700f5d1d395ae3.webp",
-    "static/media/mourek.webp": "/johndoe123484/avantyraweb.git/static/media/mourek.89674db87c13477b5f62.webp",
-    "static/media/kafe.webp": "/johndoe123484/avantyraweb.git/static/media/kafe.5f638597e03b254cc7c2.webp",
-    "static/media/kocour.webp": "/johndoe123484/avantyraweb.git/static/media/kocour.88ac94f9b2469abe7108.webp",
-    "static/media/galleryKafe.webp": "/johndoe123484/avantyraweb.git/static/media/galleryKafe.52ad7110fc04cf38bf84.webp",
-    "static/media/tulipan.webp": "/johndoe123484/avantyraweb.git/static/media/tulipan.d06efc0b33a30dff253f.webp",
-    "index.html": "/johndoe123484/avantyraweb.git/index.html",
-    "static/media/logo.svg": "/johndoe123484/avantyraweb.git/static/media/logo.6833809f0352e4eb04654abcd2431134.svg",
-    "static/media/logoGOLD.svg": "/johndoe123484/avantyraweb.git/static/media/logoGOLD.713ed73b95a4bd126fc73b24d1b80120.svg",
-    "main.440728a2.css.map": "/johndoe123484/avantyraweb.git/static/css/main.440728a2.css.map",
-    "main.024db3c1.js.map": "/johndoe123484/avantyraweb.git/static/js/main.024db3c1.js.map"
+    "main.css": "/avantyraweb/static/css/main.440728a2.css",
+    "main.js": "/avantyraweb/static/js/main.cc0940c4.js",
+    "static/media/aboutHero.webp": "/avantyraweb/static/media/aboutHero.081fbeefcde3fc3bf9d7.webp",
+    "static/media/zakusek.webp": "/avantyraweb/static/media/zakusek.359faf0bfc55a95897f6.webp",
+    "static/media/contact.webp": "/avantyraweb/static/media/contact.f2f390c95d146e0ee9cb.webp",
+    "static/media/brod.webp": "/avantyraweb/static/media/brod.cfffe254c5196b8ed85f.webp",
+    "static/media/futral.webp": "/avantyraweb/static/media/futral.fe24bc876fea1802620e.webp",
+    "static/media/dvatulipy.webp": "/avantyraweb/static/media/dvatulipy.de0cb9dce776cd15f966.webp",
+    "static/media/venek.webp": "/avantyraweb/static/media/venek.19bf12700f5d1d395ae3.webp",
+    "static/media/mourek.webp": "/avantyraweb/static/media/mourek.89674db87c13477b5f62.webp",
+    "static/media/kafe.webp": "/avantyraweb/static/media/kafe.5f638597e03b254cc7c2.webp",
+    "static/media/kocour.webp": "/avantyraweb/static/media/kocour.88ac94f9b2469abe7108.webp",
+    "static/media/galleryKafe.webp": "/avantyraweb/static/media/galleryKafe.52ad7110fc04cf38bf84.webp",
+    "static/media/tulipan.webp": "/avantyraweb/static/media/tulipan.d06efc0b33a30dff253f.webp",
+    "index.html": "/avantyraweb/index.html",
+    "static/media/logo.svg": "/avantyraweb/static/media/logo.6833809f0352e4eb04654abcd2431134.svg",
+    "static/media/logoGOLD.svg": "/avantyraweb/static/media/logoGOLD.713ed73b95a4bd126fc73b24d1b80120.svg",
+    "main.440728a2.css.map": "/avantyraweb/static/css/main.440728a2.css.map",
+    "main.cc0940c4.js.map": "/avantyraweb/static/js/main.cc0940c4.js.map"
   },
   "entrypoints": [
     "static/css/main.440728a2.css",
-    "static/js/main.024db3c1.js"
+    "static/js/main.cc0940c4.js"
   ]
 }
