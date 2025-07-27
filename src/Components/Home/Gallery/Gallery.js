@@ -25,8 +25,8 @@ const Gallery = () => {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: mosaicRef.current,
-            start: 'center-=540 top',
-            end: '+=400',
+            start: 'center-=630 top',
+            end: '+=500',
             scrub: true,
             pin: true,
           },

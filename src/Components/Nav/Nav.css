@@ -23,7 +23,16 @@
   margin: 0 auto;
 }
 
-.nav > ul > li:last-of-type {
+.nav > ul > li:nth-of-type(3) {
+  grid-column: 4;
+}
+
+.nav > ul > li:nth-of-type(4) {
+  grid-column: 3;
+  grid-row: 1 / -1
+}
+
+.nav > ul > li:nth-of-type(5) {
   grid-column: 5;
 }
 
@@ -72,6 +81,14 @@
   border: none;
   cursor: pointer;
   z-index: 20;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.hidden-text {
+  display: none;
 }
 
 .nav-header > .hover-img {

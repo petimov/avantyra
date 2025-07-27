@@ -16,7 +16,7 @@ const Menu = () => {
             <div ref={sectionRef} className="menu-photos-section">
                 {[1,2,3,4].map((id) => (
                     <div key={id} className="photo-container">
-                    <img src={`/images/photo${id}.webp`} alt={`Photo ${id}`} />
+                    <img src={`${process.env.PUBLIC_URL}/images/photo${id}.webp`} alt={`Photo ${id}`} />
                     </div>
                 ))}
             </div>

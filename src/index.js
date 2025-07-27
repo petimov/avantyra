@@ -11,6 +11,7 @@ import Footer from './Components/Footer/Footer'
 import WaveDivider from './Components/WaveDivider/WaveDivider';
 import About from './Components/About/About'
 import Contact from './Components/Contact/Contact';
+import ScrollToTop from './utils/ScrollTopTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,11 +27,10 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-window.scrollTo(0, 0);
-
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <Nav />
       <Routes>
         <Route element={<Template />}>

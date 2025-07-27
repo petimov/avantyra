@@ -4,30 +4,47 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-
 export const animatePageIn = () => {
-  const bannerOne = document.getElementById('banner-1');
-  const bannerTwo = document.getElementById('banner-2');
-  const bannerThree = document.getElementById('banner-3');
-  const bannerFour = document.getElementById('banner-4');
+  const banners = [
+    document.getElementById('banner-1'),
+    document.getElementById('banner-2'),
+    document.getElementById('banner-3'),
+    document.getElementById('banner-4'),
+  ].filter(Boolean);
 
-  if (bannerOne && bannerTwo && bannerThree && bannerFour) {
-    const tl = gsap.timeline();
+  if (!banners.length) return;
 
-    tl.set([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: 0,
-    }).to([bannerOne, bannerTwo, bannerThree, bannerFour], {
-      yPercent: 100,
-      stagger: 0.2,
-    });
-  }
-
-   gsap.to(window, {
-    duration: 2,
-    scrollTo: { y: 0 },
-    ease: 'power2.inOut',
+  // Reset position first
+  gsap.set(banners, {
+    yPercent: 0,
+    autoAlpha: 1,
   });
 
+  // Then animate
+  gsap.to(banners, {
+    yPercent: 100,
+    stagger: 0.2,
+    duration: .8,
+    ease: 'power2.out',
+  });
+};
+export const animatePhotoAppear = () => {
+
+  const content = document.querySelector('.content');
+  if (!content) return;
+
+  const images = content.querySelectorAll('.photo-container img');
+  if (!images.length) return;
+
+  gsap.set(images, { autoAlpha: 0, scale: 0.9 });
+
+  gsap.to(images, {
+    autoAlpha: 1,
+    scale: 1,
+    duration: 1.5,
+    ease: 'power3.out',
+    stagger: 0.15,
+  });
 };
 
 export const animatePhotoScroll = (section) => {
@@ -52,22 +69,6 @@ export const animatePhotoScroll = (section) => {
   });
 };
 
-export const animatePhotoAppear = () => {
-  const content = document.querySelector('.content');
-  if (!content) return;
-
-  const images = content.querySelectorAll('.photo-container img');
-
-  gsap.set(images, { autoAlpha: 0, scale: 0.9 });
-
-  gsap.to(images, {
-    autoAlpha: 1,
-    scale: 1,
-    duration: 1.5,
-    ease: 'power3.out',
-    stagger: 0.15,
-  });
-};
 
 export const animatePhotoDown = (section) => {
   const images = section.querySelectorAll('.about-text');

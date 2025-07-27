@@ -1,25 +1,21 @@
+.banner-wrapper {
+    position: fixed;
+  inset: 0;
+  z-index: 8;
+}
+
 .banner {
-  min-height: 100vh;
-  background-color: #0b1215;
   position: fixed;
   top: 0;
+  height: 100vh;
   width: 25vw;
-  z-index: 2;
-  transform: scaleX(1.01);
+  background-color: #0b1215;
+  transform: translateY(0%);
+  z-index: 8;
+  transform: scaleX(1.06);
 }
 
-.banner-1 {
-  left: 0;
-}
-
-.banner-2 {
-  left: 25vw;
-}
-
-.banner-3 {
-  left: 50vw;
-}
-
-.banner-4 {
-  left: 75vw;
-}
+.banner-1 { left: 0; }
+.banner-2 { left: 25vw; }
+.banner-3 { left: 50vw; }
+.banner-4 { left: 75vw; }

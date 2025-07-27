@@ -1,7 +1,6 @@
 {
   "name": "avantyra",
   "version": "0.1.0",
-  "homepage": "https://github.com/johndoe123484/avantyraweb.git",
   "private": true,
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
@@ -16,7 +15,10 @@
     "react-router-dom": "^7.7.0",
     "react-scripts": "5.0.1",
     "scrollreveal": "^4.0.9",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "workbox-expiration": "^7.3.0",
+    "workbox-routing": "^7.3.0",
+    "workbox-strategies": "^7.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,7 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "copy404": "shx cp public/index.html public/404.html"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "shx": "^0.4.0"
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Nav.css'
-import { Link } from 'react-router-dom'
-import logoIMG from '../../assets/logo.svg'
+import { Link, useLocation } from 'react-router-dom'
+import logoIMG from '../../assets/logo.png'
 import ScrollReveal from 'scrollreveal'
 import { Menu, X } from 'lucide-react'
 import { animateHamburgerOpen, animateHamburgerClose } from '../../utils/animations'
@@ -9,6 +9,29 @@ import { animateHamburgerOpen, animateHamburgerClose } from '../../utils/animati
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+
+  const location = useLocation();
+
+  // Check if current route is home
+  const isHome = location.pathname === '/';
+
+ useEffect(() => {
+  const body = document.body;
+
+  if (menuOpen) {
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    body.style.overflow = 'hidden';
+    body.style.paddingRight = `${scrollBarWidth}px`;
+  } else {
+    body.style.overflow = '';
+    body.style.paddingRight = '';
+  }
+
+  return () => {
+    body.style.overflow = '';
+    body.style.paddingRight = '';
+  };
+}, [menuOpen]);
 
   useEffect(() => {
     if (window.innerWidth > 800) {
@@ -74,13 +97,11 @@ const Nav = () => {
       </div>
 
         <ul className={`nav-links ${menuOpen ? 'open' : isAnimating ? 'closing' : ''}`}>
-            {menuOpen && window.innerWidth <= 800 && (
-            <li>
-                <Link to={'/'} className='hover-link hover-link-left' onClick={handleLinkClick}>
-                <span>h</span><span>o</span><span>m</span><span>e</span>
+            <li className={isHome ? 'hidden-text' : ''}>
+                <Link to={'/'}  className='hover-link hover-link-left' onClick={handleLinkClick}>
+                <span>d</span><span>o</span><span>m</span><span>ů</span>
                 </Link>
             </li>
-            )}
           <li>
             <Link to={'/menu'} className='hover-link hover-link-left' onClick={handleLinkClick} >
               <span>m</span><span>e</span><span>n</span><span>u</span>

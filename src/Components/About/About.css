@@ -5,9 +5,11 @@
 .content > .about > .about-hero > img {
     position: absolute;
     inset: 0;
+    top: 19.5vh;
     object-fit: cover;
     max-height: 97vh;
-    width: 100%;
+    width: 96%;
+    margin: 0 auto;
 }
 
 .content > .about > .about-text {
@@ -45,6 +47,8 @@
     height: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
+    flex: 1 1 30%;
+    max-width: 30%;
 }
 
 .content > .about > .about-us-gallery img:first-of-type {
@@ -64,5 +68,10 @@
 
   .about-us-gallery {
     margin: 0 auto 140px auto !important;
+    flex-direction: column;
+  }
+
+  .about-us-gallery > img {
+    max-width: unset !important;
   }
 }

@@ -10,23 +10,23 @@ const Contact = () => {
             <div className='phone'>
                 <h5>Telefon</h5>
                 <p>Lenka Šrýtrová (majitelka)</p>
-                <span>606 223 962</span>
+                <a href='tel:+420606223962'>606 223 962</a>
             </div>
             <div className='mail'>
                 <h5>email</h5>
                 <p>napište nám email</p>
-                <span>email@gmail.com</span>
+                <a href="mailto:kavarna.avantyra@seznam.cz">kavarna.avantyra@seznam.cz</a>
             </div>
         </div>
         <div className='location'>
             <img src={ContactIMG} className='contact-image' alt='akce v Avantyre'/>
             <div className='contact-text'>
                 <h1>Avantýra</h1>
-                <p>nábř.&nbsp;Obránců&nbsp;míru&nbsp;134</p>
+                <p>nábř. Obránců míru 134</p>
                 <p>Železný Brod</p>
             </div>
         </div>
-        <img src={brod} className='brod' alt='zel brod' />
+        <img src={brod} className='brod' alt='zel brod'/>
     </div>
   )
 }

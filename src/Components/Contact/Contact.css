@@ -14,6 +14,13 @@
     color: 	#d4b483;
 }
 
+.contact-wrapper > .contact > div > a {
+    color: #0b1215;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .contact-wrapper > .contact > div > p {
     font-size: 24px;
     font-family: "Signika", cursive;
@@ -86,4 +93,8 @@
     width: 100%;
   }
 
+  .contact-wrapper > .brod {
+    position: initial;
+    max-width: 100%;
+}
 }

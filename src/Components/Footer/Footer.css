@@ -5,7 +5,7 @@
 .footer-flex {
     display: flex;
     max-width: 90%;
-    padding: 0 0 2rem 0;
+    padding: 1rem 0 2rem 0;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,9 @@
 }
 @media only screen and (max-width: 450px){
 .footer-flex > ul {
-    flex-direction: column;
     gap: 20px;
+}
+.footer-flex > ul > *:not(:nth-of-type(4), :last-of-type){
+display: none;
 }
 }

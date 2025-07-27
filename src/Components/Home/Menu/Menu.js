@@ -17,7 +17,7 @@ const Menu = () => {
   return (
     <div className='menu'>
       <div className='menu-flex'>
-          <img src={kavaIMG} className='menu-image' alt='kafe'/>
+          <img src={kavaIMG} className='menu-image' alt='kafe' loading="lazy"/>
         <div className='menu-text'>
           <h3>nejen kafe</h3>
           <h4>káva, limonády, horká čokoláda, víno ...</h4>
@@ -25,7 +25,7 @@ const Menu = () => {
         </div>
       </div>
       <div className='menu-flex'>
-          <img src={zakusekIMG} className='menu-image' alt='zakusek'/>
+          <img src={zakusekIMG} className='menu-image' alt='zakusek' loading="lazy"/>
         <div className='menu-text'>
           <h3>zákusky</h3>
           <h4>Dorty, zákusky, zmrzlina</h4>

@@ -57,10 +57,7 @@
     text-align: center;
   }
 
-  .all-year {
-    height: 100vh;
-}
-  .all-year > h1 {
-    padding-bottom: 40px;
+.all-year {
+    padding-top: 2rem;
   }
 }
