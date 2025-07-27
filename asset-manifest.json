@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/avantyraweb/static/css/main.1c887cfa.css",
-    "main.js": "/avantyraweb/static/js/main.aff9f3b6.js",
-    "static/media/aboutHero.webp": "/avantyraweb/static/media/aboutHero.081fbeefcde3fc3bf9d7.webp",
-    "static/media/contact.webp": "/avantyraweb/static/media/contact.b92016bcab1f4298baa0.webp",
-    "static/media/zakusek.webp": "/avantyraweb/static/media/zakusek.359faf0bfc55a95897f6.webp",
-    "static/media/brod.webp": "/avantyraweb/static/media/brod.cfffe254c5196b8ed85f.webp",
-    "static/media/futral.webp": "/avantyraweb/static/media/futral.fe24bc876fea1802620e.webp",
-    "static/media/dvatulipy.webp": "/avantyraweb/static/media/dvatulipy.de0cb9dce776cd15f966.webp",
-    "static/media/venek.webp": "/avantyraweb/static/media/venek.19bf12700f5d1d395ae3.webp",
-    "static/media/mourek.webp": "/avantyraweb/static/media/mourek.89674db87c13477b5f62.webp",
-    "static/media/kafe.webp": "/avantyraweb/static/media/kafe.5f638597e03b254cc7c2.webp",
-    "static/media/kocour.webp": "/avantyraweb/static/media/kocour.88ac94f9b2469abe7108.webp",
-    "static/media/galleryKafe.webp": "/avantyraweb/static/media/galleryKafe.52ad7110fc04cf38bf84.webp",
-    "static/media/logoGOLD.png": "/avantyraweb/static/media/logoGOLD.3c71b053e25cbb5b272c.png",
-    "static/media/logo.png": "/avantyraweb/static/media/logo.ca866a06f896fa1638a4.png",
-    "static/media/tulipan.webp": "/avantyraweb/static/media/tulipan.d06efc0b33a30dff253f.webp",
-    "index.html": "/avantyraweb/index.html",
-    "main.1c887cfa.css.map": "/avantyraweb/static/css/main.1c887cfa.css.map",
-    "main.aff9f3b6.js.map": "/avantyraweb/static/js/main.aff9f3b6.js.map"
+    "main.css": "/static/css/main.1c887cfa.css",
+    "main.js": "/static/js/main.90250a24.js",
+    "static/media/aboutHero.webp": "/static/media/aboutHero.081fbeefcde3fc3bf9d7.webp",
+    "static/media/contact.webp": "/static/media/contact.b92016bcab1f4298baa0.webp",
+    "static/media/zakusek.webp": "/static/media/zakusek.359faf0bfc55a95897f6.webp",
+    "static/media/brod.webp": "/static/media/brod.cfffe254c5196b8ed85f.webp",
+    "static/media/futral.webp": "/static/media/futral.fe24bc876fea1802620e.webp",
+    "static/media/dvatulipy.webp": "/static/media/dvatulipy.de0cb9dce776cd15f966.webp",
+    "static/media/venek.webp": "/static/media/venek.19bf12700f5d1d395ae3.webp",
+    "static/media/mourek.webp": "/static/media/mourek.89674db87c13477b5f62.webp",
+    "static/media/kafe.webp": "/static/media/kafe.5f638597e03b254cc7c2.webp",
+    "static/media/kocour.webp": "/static/media/kocour.88ac94f9b2469abe7108.webp",
+    "static/media/galleryKafe.webp": "/static/media/galleryKafe.52ad7110fc04cf38bf84.webp",
+    "static/media/logoGOLD.png": "/static/media/logoGOLD.3c71b053e25cbb5b272c.png",
+    "static/media/logo.png": "/static/media/logo.ca866a06f896fa1638a4.png",
+    "static/media/tulipan.webp": "/static/media/tulipan.d06efc0b33a30dff253f.webp",
+    "index.html": "/index.html",
+    "main.1c887cfa.css.map": "/static/css/main.1c887cfa.css.map",
+    "main.90250a24.js.map": "/static/js/main.90250a24.js.map"
   },
   "entrypoints": [
     "static/css/main.1c887cfa.css",
-    "static/js/main.aff9f3b6.js"
+    "static/js/main.90250a24.js"
   ]
 }
