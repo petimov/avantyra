@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import './About.css'
 import { animatePhotoDown } from '../../utils/animations';
-import ScrollReveal from 'scrollreveal'
-import aboutHero from '../../assets/aboutHero.webp'
 import kafe from '../../assets/kafe.webp'
 import mourek from '../../assets/mourek.webp'
 import { initScrollReveal } from '../../utils/scrollRevealInit';
@@ -29,7 +27,7 @@ useEffect(() => {
   return (
     <div className='about' ref={sectionRef}>
       <div className='about-hero'>
-          <img src={aboutHero} alt={'hero image'} className='about-img' />
+         <img src={`${process.env.PUBLIC_URL}/images/aboutHero.webp`} alt="About hero" className='about-img' />
       </div>
       <div className='about-text'>
         <p>Kavárna Avantýra se nachází v malebném městečku Železný Brod, známém svou sklářskou tradicí a krásnou přírodou. Najdete nás kousek od řeky Jizery a historického centra. Jsme ideálním místem k odpočinku po procházce městem. Nabízíme výběrovou kávu z domácí pražírny APe Křížany, dezerty, limonády a příjemnou atmosféru s výhledem na okolí.</p>

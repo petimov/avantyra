@@ -17,7 +17,19 @@ useEffect(() => {
 
   return (
     <div className='home'>
-        <img className='cover-img' alt='cover' src={`${process.env.PUBLIC_URL}/images/main.webp` }/>
+          <img
+  className="cover-img"
+  alt="cover"
+  src={`${process.env.PUBLIC_URL}/images/main.webp`}  // default fallback
+  srcSet={`
+    ${process.env.PUBLIC_URL}/images/main-375.webp 375w,
+    ${process.env.PUBLIC_URL}/images/main-750.webp 750w,
+    ${process.env.PUBLIC_URL}/images/main.webp
+  `}
+  sizes="(max-width: 375px) 375px,
+         (max-width: 750px) 750px,
+         1000px"
+/>
         <AllYear />
         <WaveDivider flipped />
         <Gallery />

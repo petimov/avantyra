@@ -30,17 +30,17 @@ const Menu = () => {
             <div class="menu-item">
                 <h3>espresso</h3>
                 <p>8g</p>
-                <span class="price">45,-</span>
+                <span class="price">50,-</span>
             </div>
             <div class="menu-item">
                 <h3>lungo</h3>
                 <p>8g</p>
-                <span class="price">45,-</span>
+                <span class="price">50,-</span>
             </div>
             <div class="menu-item">
                 <h3>doppio</h3>
                 <p>8g</p>
-                <span class="price">60,-</span>
+                <span class="price">70,-</span>
             </div>
             <div class="menu-item">
                 <h3>cappuccino</h3>
@@ -48,88 +48,70 @@ const Menu = () => {
                 <span class="price">60,-</span>
             </div>
             <div class="menu-item">
-                <h3>cappuccino grande</h3>
+                <h3>latte macchiato</h3>
                 <p>8g</p>
                 <span class="price">75,-</span>
             </div>
             <div class="menu-item">
-                <h3>latte macchiato</h3>
+                <h3>flat white</h3>
                 <p>8g</p>
-                <span class="price">60,-</span>
+                <span class="price">80,-</span>
             </div>
             <div class="menu-item">
                 <h3>český turek</h3>
                 <p>8g</p>
-                <span class="price">40,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>vídeňská káva</h3>
-                <p>8g</p>
-                <span class="price">60,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>alžírská káva</h3>
-                <p>8g</p>
-                <span class="price">70,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>irská káva</h3>
-                <p>8g</p>
-                <span class="price">80,-</span>
+                <span class="price">45,-</span>
             </div>
             <br></br>
             <br></br>
             <div class="menu-item">
-                <h3>mléko pro děti</h3>
+                <h3>babyccino</h3>
                 <p>0,1l</p>
-                <span class="price">25,-</span>
+                <span class="price">30,-</span>
             </div>
             <div class="menu-item">
                 <h3>mléko ke kávě</h3>
                 <p></p>
                 <span class="price">3,-</span>
             </div>
-            <div class="menu-item">
-                <h3>porce šlehačky</h3>
+        </div>
+        <div className='menu'>
+            <div className='menu-item'>
+                <h1>ledová&nbsp;káva</h1>
                 <p></p>
-                <span class="price">15,-</span>
+                <span></span>
             </div>
-            <div class="menu-item">
-                <h3>med</h3>
-                <p></p>
-                <span class="price">12,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>alternativní mléko</h3>
-                <p></p>
-                <span class="price">+5,-</span>
-            </div>
-            <br></br>
-            <br></br>
-            <div class="menu-item">
+             <div class="menu-item">
                 <h3>espresso na ledu</h3>
                 <p>8g</p>
-                <span class="price">45,-</span>
+                <span class="price">50,-</span>
             </div>
             <div class="menu-item">
                 <h3>espresso tonic</h3>
                 <p>8g</p>
-                <span class="price">60,-</span>
+                <span class="price">65,-</span>
             </div>
             <div class="menu-item">
-                <h3>ledove latte</h3>
+                <h3>ledové latte</h3>
                 <p>8g</p>
-                <span class="price">60,-</span>
+                <span class="price">65,-</span>
             </div>
             <div class="menu-item">
-                <h3>- se zmrzlinou</h3>
+                <h3>latté se zmrzlinou</h3>
                 <p>8g</p>
+                <span class="price">80,-</span>
+            </div>
+            <div class="menu-item">
+                <h3>affogato</h3>
+                <p></p>
                 <span class="price">70,-</span>
             </div>
+            <br></br>
+            <br></br>
             <div class="menu-item">
-                <h3>- se zmrzlinou a šlehačkou</h3>
+                <h3>kopeček zmrzliny</h3>
                 <p></p>
-                <span class="price">80,-</span>
+                <span class="price">25,-</span>
             </div>
         </div>
         <div className='menu'>
@@ -139,24 +121,29 @@ const Menu = () => {
                 <span></span>
             </div>
             <div class="menu-item">
-                <h3>džus jablko/hruška</h3>
+                <h3>džus <span>- jablko</span></h3>
                 <p>0,1l</p>
                 <span class="price">15,-</span>
             </div>
             <div class="menu-item">
                 <h3>domácí limonáda</h3>
                 <p>0,3/0,5l</p>
-                <span class="price">45/60,-</span>
+                <span class="price">50/65,-</span>
             </div>
             <div class="menu-item">
                 <h3>tonic</h3>
-                <p></p>
+                <p>0,1l</p>
                 <span class="price">15,-</span>
             </div>
             <div class="menu-item">
-                <h3>voda</h3>
-                <p></p>
-                <span class="price">10/15/20,-</span>
+                <h3>capri-sun</h3>
+                <p>0,2l</p>
+                <span class="price">20,-</span>
+            </div>
+            <div class="menu-item">
+                <h3>sodovka/voda</h3>
+                <p>0,3/0,5l</p>
+                <span class="price">10/15,-</span>
             </div>
         </div>
         <div className='menu'>
@@ -166,44 +153,14 @@ const Menu = () => {
                 <span></span>
             </div>
             <div class="menu-item">
-                <h3>čaj porcovaný</h3>
-                <p></p>
-                <span class="price">35,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>čaj zázvorový</h3>
-                <p></p>
-                <span class="price">45,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>svařený džus jablko/hruška</h3>
-                <p></p>
-                <span class="price">40,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>horká čokoláda</h3>
-                <p></p>
-                <span class="price">55,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>- se šlehačkou</h3>
-                <p></p>
-                <span class="price">65,-</span>
-            </div>
-            <div class="menu-item">
                 <h3>grog</h3>
                 <p>0,2l</p>
-                <span class="price">50,-</span>
+                <span class="price">60,-</span>
             </div>
             <div class="menu-item">
                 <h3>horká griotka</h3>
                 <p>0,2l</p>
-                <span class="price">45,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>svařák</h3>
-                <p>0,2l</p>
-                <span class="price">55,-</span>
+                <span class="price">50,-</span>
             </div>
         </div>
         <div className='menu'>
@@ -213,19 +170,14 @@ const Menu = () => {
                 <span></span>
             </div>
             <div class="menu-item">
-                <h3>proud</h3>
-                <p>0,33</p>
+                <h3>proud <span>- láhev</span></h3>
+                <p>0,3l</p>
                 <span class="price">48,-</span>
             </div>
             <div class="menu-item">
-                <h3>birell</h3>
-                <p></p>
+                <h3>birell <span>- láhev</span></h3>
+                <p>0,5l</p>
                 <span class="price">35,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>frisco</h3>
-                <p></p>
-                <span class="price">45,-</span>
             </div>
         </div>
         <div className='menu'>
@@ -235,24 +187,31 @@ const Menu = () => {
                 <span></span>
             </div>
             <div class="menu-item">
-                <h3>bílé - dle nabídky</h3>
+                <h3>bílé suché <span>- Chardonnay</span></h3>
                 <p>0,1l</p>
                 <span class="price">28,-</span>
             </div>
             <div class="menu-item">
-                <h3>červené - dle nabídky</h3>
+                <h3>červené suché <span>- Merlot</span></h3>
                 <p>0,1l</p>
-                <span class="price">28,-</span>
+                <span class="price">30,-</span>
             </div>
+            <br></br>
+            <br></br>
             <div class="menu-item">
                 <h3>prosecco</h3>
                 <p>0,1l</p>
-                <span class="price">29,-</span>
+                <span class="price">35,-</span>
             </div>
             <div class="menu-item">
                 <h3>levandulové prosecco</h3>
                 <p>0,1l</p>
-                <span class="price">48,-</span>
+                <span class="price">60,-</span>
+            </div>
+            <div class="menu-item">
+                <h3>frisco</h3>
+                <p>0,3l</p>
+                <span class="price">45,-</span>
             </div>
         </div>
         <div className='menu'>
@@ -262,56 +221,46 @@ const Menu = () => {
                 <span></span>
             </div>
             <div class="menu-item">
-                <h3>vaječňák</h3>
+                <h3>vaječňý likér</h3>
                 <p>0,04l</p>
-                <span class="price">35,-</span>
+                <span class="price">40,-</span>
             </div>
             <div class="menu-item">
-                <h3>božkov republika</h3>
+                <h3>božkov republica</h3>
                 <p>0,04l</p>
-                <span class="price">50,-</span>
+                <span class="price">55,-</span>
             </div>
             <div class="menu-item">
                 <h3>griotka</h3>
                 <p>0,04l</p>
-                <span class="price">35,-</span>
+                <span class="price">40,-</span>
             </div>
             <div class="menu-item">
                 <h3>tullamore dew</h3>
                 <p>0,04l</p>
-                <span class="price">50,-</span>
-            </div>
-        </div>
-        <div className='menu'>
-            <div className='menu-item'>
-                <h1>něco&nbsp;na&nbsp;zub</h1>
-                <p></p>
-                <span></span>
-            </div>
-            <div class="menu-item">
-                <h3>toust s mozzarellou a bazalkovým pestem, obloha</h3>
-                <p></p>
                 <span class="price">65,-</span>
             </div>
             <div class="menu-item">
-                <h3>nachos se zakys. smetanou</h3>
-                <p></p>
-                <span class="price">70,-</span>
+                <h3>gin beefeater</h3>
+                <p>0,04l</p>
+                <span class="price">65,-</span>
+            </div>
+            <br></br>
+            <br></br>
+            <div class="menu-item">
+                <h3>gin tonic <span>-&nbsp;0,04l&nbsp;beefeater</span></h3>
+                <p>0,2l</p>
+                <span class="price">100,-</span>
             </div>
             <div class="menu-item">
-                <h3>nachos</h3>
-                <p></p>
-                <span class="price">35,-</span>
+                <h3>cola s rumem <span>-&nbsp;0,04l&nbsp;božkov&nbsp;republica</span></h3>
+                <p>0,2l</p>
+                <span class="price">90,-</span>
             </div>
             <div class="menu-item">
-                <h3>rakvička se šlehačkou</h3>
-                <p></p>
-                <span class="price">30,-</span>
-            </div>
-            <div class="menu-item">
-                <h3>vanilková zmrzlina</h3>
-                <p></p>
-                <span class="price">20,-</span>
+                <h3>aperol spritz <span>-&nbsp;0,06l&nbsp;Prosecco,&nbsp;0,04l&nbsp;Aperol,&nbsp;soda</span></h3>
+                <p>0,04l</p>
+                <span class="price">100,-</span>
             </div>
         </div>
     </div>
