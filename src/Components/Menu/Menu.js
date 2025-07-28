@@ -258,7 +258,7 @@ const Menu = () => {
                 <span class="price">90,-</span>
             </div>
             <div class="menu-item">
-                <h3>aperol spritz <span>-&nbsp;0,06l&nbsp;Prosecco,&nbsp;0,04l&nbsp;Aperol,&nbsp;soda</span></h3>
+                <h3>aperol spritz <span>- 0,06l&nbsp;Prosecco,&nbsp;0,04l Aperol, soda</span></h3>
                 <p>0,04l</p>
                 <span class="price">100,-</span>
             </div>

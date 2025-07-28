@@ -21,7 +21,7 @@ const Menu = () => {
         <div className='menu-text'>
           <h3>nejen kafe</h3>
           <h4>káva, limonády, horká čokoláda, víno ...</h4>
-        <p> Naše nabídka nápojů je široká a jistě vám uspokojí všechny chuťové pohárky. Připravujeme kávu z kvalitních zrn, jejichž aromatická chuť vás příjemně naladí na celý den. Kromě toho tu najdete i široký výběr lahodných čajů, horké čokolády, osvěžujících limonád a dalších specialit. </p>
+        <p> Naše nabídka nápojů je široká a jistě vám uspokojí všechny chuťové pohárky. Připravujeme kávu z kvalitních zrn pražírny APe Křížany, jejichž aromatická chuť vás příjemně naladí na celý den. Kromě toho tu najdete i široký výběr ledových káv, osvěžujících limonád, vína a dalších specialit.</p>
         </div>
       </div>
       <div className='menu-flex'>
@@ -29,7 +29,7 @@ const Menu = () => {
         <div className='menu-text'>
           <h3>zákusky</h3>
           <h4>Dorty, zákusky, zmrzlina</h4>
-        <p>Pro ty, kteří by chtěli něco na zub, máme také širokou škálu dezertů a malých svačinek.</p>
+        <p>Pro ty, kteří by chtěli něco na zub, máme také širokou škálu dezertů i zákusků.</p>
         </div>
       </div>
     </div>
