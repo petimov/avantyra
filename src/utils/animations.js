@@ -27,6 +27,9 @@ export const animatePageIn = () => {
     duration: .8,
     ease: 'power2.out',
   });
+
+  // Scroll to top 
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 };
 export const animatePhotoAppear = () => {
 
