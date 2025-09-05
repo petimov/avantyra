@@ -1,55 +1,72 @@
-import { useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
+import { useScroll, useTransform, motion } from 'framer-motion';
 import './Gallery.css';
-import galleryCafe from '../../../assets/galleryKafe.webp'
-import contact from '../../../assets/contact.webp'
-import venek from '../../../assets/venek.webp'
-import tulipan from '../../../assets/tulipan.webp'
-import kocour from '../../../assets/kocour.webp'
-import dvatulipy from '../../../assets/dvatulipy.webp'
-
-gsap.registerPlugin(ScrollTrigger);
+import Picture1 from '../../../assets/futral.webp';
+import Picture2 from '../../../assets/dvatulipy.webp';
+import Picture3 from '../../../assets/galleryKafe.webp';
+import Picture4 from '../../../assets/kafe.webp';
+import Picture5 from '../../../assets/limo.webp';
+import Picture6 from '../../../assets/matcha.webp';
 
 const Gallery = () => {
-  const mosaicRef = useRef(null);
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  })
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        mosaicRef.current,
-        { scale: 3,y: 0 },
-        {
-          scale: 1,
-          y: -200,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: mosaicRef.current,
-            start: 'center-=630 top',
-            end: '+=500',
-            scrub: true,
-            pin: true,
-          },
-        }
-      );
-    }, mosaicRef);
+  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
+  const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
+  const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
+  const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
+  const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
 
-    return () => ctx.revert();
-  }, []);
+  const pictures = [
+    {
+      src: Picture1,
+      scale: scale4
+    },
+    {
+      src: Picture2,
+      scale: scale5
+    },
+    {
+      src: Picture3,
+      scale: scale6
+    },
+    {
+      src: Picture4,
+      scale: scale5
+    },
+    {
+      src: Picture5,
+      scale: scale6
+    },
+    {
+      src: Picture6,
+      scale: scale8
+    }
+  ]
 
   return (
-    <div className="zoom-scroll-wrapper">
-      <div className="mosaic" ref={mosaicRef}>
-        <img src={galleryCafe} className="item item1" alt="cover 1" />
-        <img src={contact} className="item item2" alt="cover 2" />
-        <img src={venek} className="item item3" alt="cover 3" />
-        <img src={tulipan} className="item item4" alt="cover 4" />
-        <img src={`${process.env.PUBLIC_URL}/images/photo2.webp`} className="item item5" alt="cover 5" />
-        <img src={kocour} className="item item6" alt="cover 6" />
-        <img src={dvatulipy} className="item item7" alt="cover 7" />
+    <div className="container" ref={container}>
+      <div>
+        {
+          pictures.map(({ src, scale }, index) => {
+            return <motion.div key={index} style={{ scale }}>
+              <div>
+                <img
+                  src={src}
+                  fill
+                  alt="image"
+                  placeholder='blur'
+                />
+              </div>
+            </motion.div>
+          })
+        }
       </div>
     </div>
   );
-};
-
+}
 export default Gallery;
