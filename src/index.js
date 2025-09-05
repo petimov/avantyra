@@ -12,36 +12,27 @@ import WaveDivider from './Components/WaveDivider/WaveDivider';
 import About from './Components/About/About'
 import Contact from './Components/Contact/Contact';
 import ScrollToTop from './utils/ScrollTopTop';
+import LenisProvider from './Components/LenisProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const lenis = new Lenis({
-  lerp: 0.1,
-  smoothWheel: true,
-  smoothTouch: true,
-});
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ScrollToTop />
-      <Nav />
-      <Routes>
-        <Route element={<Template />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/menu' element={<Menu />} />
-          <Route path='/o-nas' element={<About />} />
-          <Route path='/kontakt' element={<Contact />} />
-        </Route>
-      </Routes>
-      <WaveDivider flipped />
-      <Footer />
-    </BrowserRouter>
+    <LenisProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Nav />
+        <Routes>
+          <Route element={<Template />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/o-nas' element={<About />} />
+            <Route path='/kontakt' element={<Contact />} />
+          </Route>
+        </Routes>
+        <WaveDivider flipped />
+        <Footer />
+      </BrowserRouter>
+    </LenisProvider>
   </React.StrictMode>
 );
