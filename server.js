@@ -16,7 +16,9 @@ const app = express();
 
 // --- Middlewares ---
 app.use(cors({
-    origin: ["https://avantyra.vercel.app"], // frontend URL
+    origin: [
+        "https://avantyra.vercel.app" // prod frontend
+    ],
     credentials: true
 }));
 app.use(express.json());

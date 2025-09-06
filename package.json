@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"react-scripts start\"",
+    "dev": "concurrently \"node server.js\" \"set PORT=3001 && react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
