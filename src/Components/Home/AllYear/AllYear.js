@@ -3,7 +3,7 @@ import './AllYear.css'
 import ScrollReveal from 'scrollreveal'
 
 const AllYear = () => {
-   useEffect(() => {
+  useEffect(() => {
     ScrollReveal().reveal('.all-year', {
       distance: '110px',
       origin: 'bottom',
@@ -12,13 +12,13 @@ const AllYear = () => {
       reset: true,
     });
     ScrollReveal().reveal('.all-year > *', {
-  distance: '20px',
-  origin: 'bottom',
-  duration: 500,
-  easing: 'ease',
-  reset: true,
-  interval: 80,
-});
+      distance: '20px',
+      origin: 'bottom',
+      duration: 500,
+      easing: 'ease',
+      reset: true,
+      interval: 80,
+    });
   }, []);
   return (
     <div className='all-year'>

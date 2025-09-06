@@ -1,15 +1,15 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import './Template.css';
 import { useEffect } from 'react';
-import { animatePageIn, animatePhotoAppear } from '../../utils/animations'; // example
+import { animatePageIn, animatePhotoAppear } from '../../utils/animations.js'; // example
 
 export default function Template() {
   const location = useLocation();
 
- useEffect(() => {
-  animatePageIn();
-  animatePhotoAppear();
-}, [location.pathname]);
+  useEffect(() => {
+    animatePageIn();
+    animatePhotoAppear();
+  }, [location.pathname]);
 
   return (
     <div>

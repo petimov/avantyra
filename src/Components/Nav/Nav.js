@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import logoIMG from '../../assets/logo.png'
 import ScrollReveal from 'scrollreveal'
 import { Menu, X } from 'lucide-react'
-import { animateHamburgerOpen, animateHamburgerClose } from '../../utils/animations'
+import { animateHamburgerOpen, animateHamburgerClose } from '../../utils/animations.js'
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -15,23 +15,23 @@ const Nav = () => {
   // Check if current route is home
   const isHome = location.pathname === '/';
 
- useEffect(() => {
-  const body = document.body;
+  useEffect(() => {
+    const body = document.body;
 
-  if (menuOpen) {
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-    body.style.overflow = 'hidden';
-    body.style.paddingRight = `${scrollBarWidth}px`;
-  } else {
-    body.style.overflow = '';
-    body.style.paddingRight = '';
-  }
+    if (menuOpen) {
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      body.style.overflow = 'hidden';
+      body.style.paddingRight = `${scrollBarWidth}px`;
+    } else {
+      body.style.overflow = '';
+      body.style.paddingRight = '';
+    }
 
-  return () => {
-    body.style.overflow = '';
-    body.style.paddingRight = '';
-  };
-}, [menuOpen]);
+    return () => {
+      body.style.overflow = '';
+      body.style.paddingRight = '';
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     if (window.innerWidth > 800) {
@@ -78,9 +78,9 @@ const Nav = () => {
   }
 
   const handleLinkClick = () => {
-  animateHamburgerClose();
-  setMenuOpen(false);
-}
+    animateHamburgerClose();
+    setMenuOpen(false);
+  }
 
   return (
     <div className='nav'>
@@ -90,39 +90,39 @@ const Nav = () => {
         </Link>
 
         {window.innerWidth <= 800 && (
-            <button className="hamburger" onClick={handleHamburgerClick} disabled={isAnimating} style={{ color: menuOpen ? '#FFFAFA' : 'inherit' }}>
+          <button className="hamburger" onClick={handleHamburgerClick} disabled={isAnimating} style={{ color: menuOpen ? '#FFFAFA' : 'inherit' }}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+          </button>
         )}
       </div>
 
-        <ul className={`nav-links ${menuOpen ? 'open' : isAnimating ? 'closing' : ''}`}>
-            <li className={isHome ? 'hidden-text' : ''}>
-                <Link to={'/'}  className='hover-link hover-link-left' onClick={handleLinkClick}>
-                <span>d</span><span>o</span><span>m</span><span>ů</span>
-                </Link>
-            </li>
-          <li>
-            <Link to={'/menu'} className='hover-link hover-link-left' onClick={handleLinkClick} >
-              <span>m</span><span>e</span><span>n</span><span>u</span>
-            </Link>
-          </li>
-          <li>
-            <Link to={'/o-nas'} className='hover-link hover-link-left' onClick={handleLinkClick}>
-              <span>o</span><span>&nbsp;</span><span>n</span><span>á</span><span>s</span>
-            </Link>
-          </li>
-          <li className='mobile-logo'>
-            <Link to={'/'} className='hover-img' onClick={handleLinkClick}>
-              <img src={logoIMG} alt='Avantyra' />
-            </Link>
-          </li>
-          <li>
-            <Link to={'/kontakt'} className='hover-link hover-link-right' onClick={handleLinkClick}>
-              <span>k</span><span>o</span><span>n</span><span>t</span><span>a</span><span>k</span><span>t</span>
-            </Link>
-          </li>
-        </ul>
+      <ul className={`nav-links ${menuOpen ? 'open' : isAnimating ? 'closing' : ''}`}>
+        <li className={isHome ? 'hidden-text' : ''}>
+          <Link to={'/'} className='hover-link hover-link-left' onClick={handleLinkClick}>
+            <span>d</span><span>o</span><span>m</span><span>ů</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={'/menu'} className='hover-link hover-link-left' onClick={handleLinkClick} >
+            <span>m</span><span>e</span><span>n</span><span>u</span>
+          </Link>
+        </li>
+        <li>
+          <Link to={'/o-nas'} className='hover-link hover-link-left' onClick={handleLinkClick}>
+            <span>o</span><span>&nbsp;</span><span>n</span><span>á</span><span>s</span>
+          </Link>
+        </li>
+        <li className='mobile-logo'>
+          <Link to={'/'} className='hover-img' onClick={handleLinkClick}>
+            <img src={logoIMG} alt='Avantyra' />
+          </Link>
+        </li>
+        <li>
+          <Link to={'/kontakt'} className='hover-link hover-link-right' onClick={handleLinkClick}>
+            <span>k</span><span>o</span><span>n</span><span>t</span><span>a</span><span>k</span><span>t</span>
+          </Link>
+        </li>
+      </ul>
     </div>
   )
 }

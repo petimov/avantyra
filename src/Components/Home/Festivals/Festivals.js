@@ -4,7 +4,7 @@ import ScrollReveal from 'scrollreveal'
 import festIMG from '../../../assets/futral.webp'
 
 const Festivals = () => {
-   useEffect(() => {
+  useEffect(() => {
     ScrollReveal().reveal('.festival-text', {
       distance: '50px',
       origin: 'bottom',
@@ -15,7 +15,7 @@ const Festivals = () => {
   }, []);
   return (
     <div className='festivals'>
-      <img src={festIMG} className='festivals-image' alt='akce v Avantyre' loading="lazy"/>
+      <img src={festIMG} className='festivals-image' alt='akce v Avantyre' loading="lazy" />
       <div className='festival-text'>
         <h1>Akce</h1>
         <p>V kavárně se nám také pravidelně konají různé akce a workshopy.</p>
