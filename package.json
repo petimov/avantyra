@@ -31,7 +31,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"react-scripts start\"",
-    "build-frontend": "react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test"
   },
   "proxy": "http://localhost:4000",
