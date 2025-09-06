@@ -15,13 +15,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // --- Middlewares ---
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({
+    origin: ["https://avantyra.vercel.app"], // frontend URL
+    credentials: true
+}));
 app.use(express.json());
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: process.env.NODE_ENV === "production" }
 }));
 
 app.use(passport.initialize());
@@ -40,9 +44,9 @@ const MenuItem = mongoose.model("MenuItem", MenuItemSchema);
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback"
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, (accessToken, refreshToken, profile, done) => {
-    const adminEmail = process.env.ADMIN_EMAIL; // allowed manager email
+    const adminEmail = process.env.ADMIN_EMAIL;
     if (profile.emails[0].value === adminEmail) return done(null, profile);
     return done(null, false);
 }));
@@ -114,25 +118,23 @@ app.delete("/api/menu/:id", ensureAuth, async (req, res) => {
 app.get("/logout", (req, res) => {
     req.logout(err => {
         if (err) return res.status(500).json({ error: "Logout failed" });
-        // destroy session completely
         req.session.destroy(() => {
-            res.clearCookie("connect.sid"); // optional: clear cookie
+            res.clearCookie("connect.sid");
             res.json({ success: true });
         });
     });
 });
 
-
-// --- Serve React in production ---
+// Serve React in production if needed
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "build")));
     app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "build", "index.html"));
     });
-}
+};
 
-// --- Start server ---
-mongoose.connect("mongodb://localhost:27017/cafe")
+// --- Connect to MongoDB and start server ---
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("✅ DB connected");
         const PORT = process.env.PORT || 4000;
