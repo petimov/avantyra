@@ -14,21 +14,17 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// --- Middleware ---
-app.use(express.json());
-
-// CORS: allow frontend domain + credentials
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://avantyra.vercel.app";
+// --- Middlewares ---
 app.use(cors({
-    origin: FRONTEND_URL,
+    origin: ["https://avantyra.vercel.app"], // frontend URL
     credentials: true
 }));
+app.use(express.json());
 
-// Session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { secure: process.env.NODE_ENV === "production" }
 }));
 
@@ -50,7 +46,8 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, (accessToken, refreshToken, profile, done) => {
-    if (profile.emails[0].value === process.env.ADMIN_EMAIL) return done(null, profile);
+    const adminEmail = process.env.ADMIN_EMAIL;
+    if (profile.emails[0].value === adminEmail) return done(null, profile);
     return done(null, false);
 }));
 
@@ -64,15 +61,15 @@ app.get("/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/auth/failure" }),
     (req, res) => {
         res.send(`<script>
-      window.opener.postMessage({ user: true }, "*");
-      window.close();
-    </script>`);
+            window.opener.postMessage({ user: true }, "*");
+            window.close();
+        </script>`);
     }
 );
 
 app.get("/auth/failure", (req, res) => res.send("Login Failed"));
 
-// --- Auth middleware ---
+// --- Auth check middleware ---
 function ensureAuth(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.status(401).json({ error: "Unauthorized" });
@@ -117,7 +114,7 @@ app.delete("/api/menu/:id", ensureAuth, async (req, res) => {
     }
 });
 
-// Logout
+// Logout route
 app.get("/logout", (req, res) => {
     req.logout(err => {
         if (err) return res.status(500).json({ error: "Logout failed" });
@@ -128,19 +125,19 @@ app.get("/logout", (req, res) => {
     });
 });
 
-// --- Serve React frontend in production ---
+// Serve React in production if needed
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "build")));
     app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "build", "index.html"));
     });
-}
+});
 
 // --- Connect to MongoDB and start server ---
-const PORT = process.env.PORT || 4000;
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("✅ DB connected");
+        const PORT = process.env.PORT || 4000;
         app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
     })
-    .catch(err => console.error("❌ DB connection error:", err));
+    .catch(err => console.log("❌ DB connection error:", err));

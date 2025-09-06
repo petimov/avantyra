@@ -10,7 +10,7 @@ function AdminDashboard() {
 
     // Use dynamic backend URL
     const API_URL = process.env.NODE_ENV === "production"
-        ? "https://avantyra.onrender.com/"
+        ? "https://your-backend-url.com"
         : "http://localhost:4000";
 
     // Fetch logged-in user on mount
