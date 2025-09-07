@@ -137,6 +137,22 @@ app.get("/logout", (req, res) => {
     });
 });
 
+// --- TEMPORARY: Seed test menu items ---
+app.get("/seed-menu", async (req, res) => {
+    try {
+        await MenuItem.deleteMany({});
+        await MenuItem.insertMany([
+            { category: "Klasiky", name: "Espresso", gram: "8g", price: "50" },
+            { category: "Klasiky", name: "Cappuccino", gram: "8g", price: "60" },
+            { category: "Ledová káva", name: "Espresso tonic", gram: "8g", price: "65" },
+            { category: "Víno", name: "Merlot červené", gram: "0.1l", price: "30" },
+        ]);
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // --- Serve React frontend (MUST be last) ---
 if (process.env.NODE_ENV === "production") {
     const buildPath = path.join(__dirname, "build");
