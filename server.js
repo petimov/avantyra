@@ -135,6 +135,11 @@ app.get("/logout", (req, res) => {
     });
 });
 
+app.get("/api/me", (req, res) => {
+    console.log("User session:", req.user);
+    res.json({ user: req.user || null });
+});
+
 const buildPath = path.join(__dirname, "build");
 console.log("Build folder exists:", fs.existsSync(buildPath));
 
