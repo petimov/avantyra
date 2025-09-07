@@ -137,22 +137,13 @@ app.get("/logout", (req, res) => {
 const buildPath = path.join(__dirname, "build");
 console.log("Build folder exists:", fs.existsSync(buildPath));
 
-// Serve React in production if needed
-// Add this after your API routes but before the React catch-all
 if (process.env.NODE_ENV === "production") {
     const buildPath = path.join(__dirname, "build");
 
-    // Serve static files correctly
-    app.use(express.static(buildPath, {
-        setHeaders: (res, path) => {
-            // Set proper MIME type for JS files
-            if (path.endsWith('.js')) {
-                res.setHeader('Content-Type', 'application/javascript');
-            }
-        }
-    }));
+    // Serve JS, CSS, images correctly
+    app.use(express.static(buildPath));
 
-    // Catch-all for React Router paths - should be the last route
+    // Catch-all for React Router paths
     app.get("*", (req, res) => {
         res.sendFile(path.join(buildPath, "index.html"));
     });
