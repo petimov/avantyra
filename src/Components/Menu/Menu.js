@@ -321,7 +321,7 @@ const Menu = () => {
                     {items.map(item => (
                         <div key={item._id} className="menu-item">
                             <h3>{item.name}</h3>
-                            <p>{item.gram}</p>
+                            <p>{item.dose}</p>
                             <span className="price">{item.price},-</span>
                         </div>
                     ))}

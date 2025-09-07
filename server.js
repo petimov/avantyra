@@ -47,7 +47,7 @@ app.use(passport.session());
 const MenuItemSchema = new mongoose.Schema({
     category: { type: String, required: true },
     name: { type: String, required: true },
-    gram: { type: String, default: "" },
+    dose: { type: String, default: true },
     price: { type: String, required: true },
 });
 const MenuItem = mongoose.model("MenuItem", MenuItemSchema);

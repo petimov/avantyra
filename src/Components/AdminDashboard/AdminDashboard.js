@@ -5,7 +5,7 @@ function AdminDashboard() {
     const [user, setUser] = useState(null); // null = loading, false = failed, object = logged in
     const [menu, setMenu] = useState({});
     const [categories, setCategories] = useState([]);
-    const [newItem, setNewItem] = useState({ category: "", name: "", price: "" });
+    const [newItem, setNewItem] = useState({ category: "", name: "", price: "", dose: "" });
     const [newCategory, setNewCategory] = useState("");
 
     const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
@@ -14,8 +14,6 @@ function AdminDashboard() {
         fetch(`${API_URL}/api/me`, { credentials: "include" })
             .then(res => res.json())
             .then(data => {
-                console.log("==== /api/me response ====");
-                console.log("data.user:", data.user);
                 setUser(data.user || false);
             })
             .catch(() => setUser(false));
@@ -24,19 +22,6 @@ function AdminDashboard() {
     useEffect(() => {
         if (!user || user === false) return;
 
-        fetch(`${API_URL}/api/menu`, { credentials: "include" })
-            .then(res => res.json())
-            .then(data => {
-                console.log("Fetched menu:", data);
-                setMenu(data);
-                setCategories(Object.keys(data));
-            })
-            .catch(err => console.error("Error fetching menu:", err));
-    }, [user, API_URL]);
-
-    // Fetch menu if logged in
-    useEffect(() => {
-        if (!user || user === false) return;
         fetch(`${API_URL}/api/menu`, { credentials: "include" })
             .then(res => res.json())
             .then(data => {
@@ -68,7 +53,7 @@ function AdminDashboard() {
                     [data.category]: prev[data.category] ? [...prev[data.category], data] : [data]
                 }));
                 if (!categories.includes(data.category)) setCategories(prev => [...prev, data.category]);
-                setNewItem({ category: "", name: "", price: "" });
+                setNewItem({ category: "", name: "", price: "", dose: "" });
                 setNewCategory("");
             })
             .catch(err => console.error("Chyba při přidávání položky:", err));
@@ -121,7 +106,6 @@ function AdminDashboard() {
             .catch(() => setUser(false));
     }
 
-    // Login screen
     if (!user) {
         return (
             <div className="admin-login">
@@ -131,7 +115,6 @@ function AdminDashboard() {
         );
     }
 
-    // Admin dashboard
     return (
         <div className="admin-content">
             <h1>Správa menu</h1>
@@ -168,6 +151,12 @@ function AdminDashboard() {
                     value={newItem.price}
                     onChange={e => setNewItem({ ...newItem, price: e.target.value })}
                 />
+                <input
+                    type="text"
+                    placeholder="Dose / Gramáž"
+                    value={newItem.dose}
+                    onChange={e => setNewItem({ ...newItem, dose: e.target.value })}
+                />
                 <button onClick={addItem}>Přidat položku</button>
             </div>
 
@@ -177,7 +166,7 @@ function AdminDashboard() {
                     <ul className="admin-menu-list">
                         {items.map(item => (
                             <li key={item._id}>
-                                {item.name} - {item.price},-
+                                {item.name} {item.dose && `(${item.dose})`} - {item.price},-
                                 <button onClick={() => deleteItem(item._id, category)}>Odstranit</button>
                             </li>
                         ))}
