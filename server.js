@@ -136,9 +136,12 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/api/me", (req, res) => {
-    console.log("User session:", req.user);
+    console.log("==== /api/me called ====");
+    console.log("req.user:", req.user); // will be null if not logged in
+    console.log("req.sessionID:", req.sessionID); // session identifier
     res.json({ user: req.user || null });
 });
+
 
 const buildPath = path.join(__dirname, "build");
 console.log("Build folder exists:", fs.existsSync(buildPath));

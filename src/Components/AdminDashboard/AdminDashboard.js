@@ -10,7 +10,20 @@ function AdminDashboard() {
 
     const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
 
-    console.log("API_URL:", API_URL);
+    useEffect(() => {
+        fetch(`${API_URL}/api/me`, { credentials: "include" })
+            .then(res => res.json())
+            .then(data => {
+                console.log("==== /api/me response ====");
+                console.log("data.user:", data.user); // should be object if logged in
+                setUser(data.user ? data.user : false);
+            })
+            .catch(err => {
+                console.error("Error fetching /api/me:", err);
+                setUser(false);
+            });
+    }, [API_URL]);
+
 
     // Fetch logged-in user on mount
     useEffect(() => {
