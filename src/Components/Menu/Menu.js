@@ -269,28 +269,60 @@
 
 // export default Menu
 
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
+import './Menu.css';
+import { animatePhotoScroll } from '../../utils/animations.js';
 
 const Menu = () => {
+    const sectionRef = useRef(null);
     const [menu, setMenu] = useState({});
 
+    // Use your Render backend directly
+    const API_URL = "https://avantyra.onrender.com";
+
     useEffect(() => {
-        fetch("/api/menu", { credentials: "include" })
-            .then(res => res.json())
-            .then(data => setMenu(data))
-            .catch(err => console.error("Error fetching menu:", err));
+        // Animate the photos section
+        animatePhotoScroll(sectionRef.current);
+
+        // Fetch menu data from Render backend
+        fetch(`${API_URL}/api/menu`, { credentials: 'include' })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json(); // Parse JSON only if fetch succeeds
+            })
+            .then(data => {
+                console.log("Fetched menu:", data);
+                setMenu(data);
+            })
+            .catch(err => {
+                console.error("Error fetching menu:", err);
+            });
     }, []);
 
     return (
-        <div className="menu-wrapper">
+        <div className='menu-wrapper'>
+            <div className='menu-hero'>
+                <h1>Menu</h1>
+                <h2>Objevte naše speciality</h2>
+                <div ref={sectionRef} className="menu-photos-section">
+                    {[1, 2, 3, 4].map(id => (
+                        <div key={id} className="photo-container">
+                            <img src={`${process.env.PUBLIC_URL}/images/photo${id}.webp`} alt={`Photo ${id}`} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             {Object.entries(menu).map(([category, items]) => (
-                <div key={category} className="menu-category">
-                    <h2>{category}</h2>
+                <div key={category} className='menu'>
+                    <div className='menu-item'>
+                        <h1>{category}</h1>
+                    </div>
                     {items.map(item => (
                         <div key={item._id} className="menu-item">
-                            <span className="menu-name">{item.name}</span>
-                            <span className="menu-gram">{item.gram}</span>
-                            <span className="menu-price">{item.price},-</span>
+                            <h3>{item.name}</h3>
+                            <p>{item.gram}</p>
+                            <span className="price">{item.price},-</span>
                         </div>
                     ))}
                 </div>
