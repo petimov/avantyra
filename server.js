@@ -134,13 +134,21 @@ app.get("/logout", (req, res) => {
 });
 
 // Serve React in production if needed
+// Add this after your API routes but before the React catch-all
 if (process.env.NODE_ENV === "production") {
     const buildPath = path.join(__dirname, "build");
 
-    // Serve JS, CSS, images correctly
-    app.use(express.static(buildPath));
+    // Serve static files correctly
+    app.use(express.static(buildPath, {
+        setHeaders: (res, path) => {
+            // Set proper MIME type for JS files
+            if (path.endsWith('.js')) {
+                res.setHeader('Content-Type', 'application/javascript');
+            }
+        }
+    }));
 
-    // Catch-all for React Router paths
+    // Catch-all for React Router paths - should be the last route
     app.get("*", (req, res) => {
         res.sendFile(path.join(buildPath, "index.html"));
     });
