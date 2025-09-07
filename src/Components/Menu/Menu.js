@@ -269,55 +269,28 @@
 
 // export default Menu
 
-import React, { useRef, useEffect, useState } from 'react';
-import './Menu.css';
-import { animatePhotoScroll } from '../../utils/animations.js';
+import React, { useEffect, useState } from "react";
 
 const Menu = () => {
-    const sectionRef = useRef(null);
-    const [menu, setMenu] = useState({}); // <-- object, not array
-    console.log(menu)
+    const [menu, setMenu] = useState({});
 
     useEffect(() => {
-        animatePhotoScroll(sectionRef.current);
-
-        fetch('/api/menu')
+        fetch("/api/menu", { credentials: "include" })
             .then(res => res.json())
-            .then(data => {
-                console.log("Fetched menu:", data);
-                if (data && typeof data === 'object') setMenu(data); // <-- accept object
-                else setMenu({});
-            })
-            .catch(err => console.error(err));
+            .then(data => setMenu(data))
+            .catch(err => console.error("Error fetching menu:", err));
     }, []);
 
-    // groupedMenu is now just the menu object itself
-    const groupedMenu = menu;
-
     return (
-        <div className='menu-wrapper'>
-            <div className='menu-hero'>
-                <h1>menu</h1>
-                <h2>Objevte naše speciality</h2>
-                <div ref={sectionRef} className="menu-photos-section">
-                    {[1, 2, 3, 4].map(id => (
-                        <div key={id} className="photo-container">
-                            <img src={`${process.env.PUBLIC_URL}/images/photo${id}.webp`} alt={`Photo ${id}`} />
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {Object.entries(groupedMenu).map(([category, items]) => (
-                <div key={category} className='menu'>
-                    <div className='menu-item'>
-                        <h1>{category}</h1>
-                    </div>
+        <div className="menu-wrapper">
+            {Object.entries(menu).map(([category, items]) => (
+                <div key={category} className="menu-category">
+                    <h2>{category}</h2>
                     {items.map(item => (
                         <div key={item._id} className="menu-item">
-                            <h3>{item.name}</h3>
-                            <p>{item.gram}</p>
-                            <span className="price">{item.price},-</span>
+                            <span className="menu-name">{item.name}</span>
+                            <span className="menu-gram">{item.gram}</span>
+                            <span className="menu-price">{item.price},-</span>
                         </div>
                     ))}
                 </div>
@@ -327,4 +300,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
