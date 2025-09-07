@@ -135,11 +135,16 @@ app.get("/logout", (req, res) => {
 
 // Serve React in production if needed
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "build")));
+    const buildPath = path.join(__dirname, "build");
+
+    // Serve JS, CSS, images correctly
+    app.use(express.static(buildPath));
+
+    // Catch-all for React Router paths
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "build", "index.html"));
+        res.sendFile(path.join(buildPath, "index.html"));
     });
-};
+}
 
 // --- Connect to MongoDB and start server ---
 mongoose.connect(process.env.MONGO_URI)
