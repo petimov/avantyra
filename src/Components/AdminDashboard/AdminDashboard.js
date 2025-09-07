@@ -15,23 +15,24 @@ function AdminDashboard() {
             .then(res => res.json())
             .then(data => {
                 console.log("==== /api/me response ====");
-                console.log("data.user:", data.user); // should be object if logged in
-                setUser(data.user ? data.user : false);
+                console.log("data.user:", data.user);
+                setUser(data.user || false);
             })
-            .catch(err => {
-                console.error("Error fetching /api/me:", err);
-                setUser(false);
-            });
-    }, [API_URL]);
-
-
-    // Fetch logged-in user on mount
-    useEffect(() => {
-        fetch(`${API_URL}/api/me`, { credentials: "include" })
-            .then(res => res.json())
-            .then(data => setUser(data.user ? data.user : false))
             .catch(() => setUser(false));
     }, [API_URL]);
+
+    useEffect(() => {
+        if (!user || user === false) return;
+
+        fetch(`${API_URL}/api/menu`, { credentials: "include" })
+            .then(res => res.json())
+            .then(data => {
+                console.log("Fetched menu:", data);
+                setMenu(data);
+                setCategories(Object.keys(data));
+            })
+            .catch(err => console.error("Error fetching menu:", err));
+    }, [user, API_URL]);
 
     // Fetch menu if logged in
     useEffect(() => {
