@@ -7,6 +7,8 @@ import passport from "passport";
 import session from "express-session";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import dotenv from "dotenv";
+import fs from "fs";
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,15 +26,15 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.set("trust proxy", 1);
+app.set("trust proxy", 1); // required if behind a proxy (Render, Heroku, etc.)
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: true,       // must be true in production with HTTPS
-        sameSite: "none",   // allows cross-origin cookies
+        secure: process.env.NODE_ENV === "production", // HTTPS only in production
+        sameSite: "none", // allow cross-origin cookies
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
     }
@@ -64,32 +66,14 @@ passport.use(new GoogleStrategy({
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
-// --- Auth routes ---
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-app.get("/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/auth/failure" }),
-    (req, res) => {
-        res.send(`<script>
-      window.opener.postMessage({ user: true }, "*");
-      window.close();
-    </script>`);
-    }
-);
-
-app.get("/auth/failure", (req, res) => res.send("Login Failed"));
-
-// --- Middleware for protected routes ---
+// --- Auth middleware ---
 function ensureAuth(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.status(401).json({ error: "Unauthorized" });
 }
 
-// --- API routes ---
+// --- API routes (must come BEFORE React catch-all) ---
 app.get("/api/me", (req, res) => {
-    console.log("==== /api/me called ====");
-    console.log("req.user:", req.user);
-    console.log("req.sessionID:", req.sessionID);
     res.json({ user: req.user || null });
 });
 
@@ -127,6 +111,20 @@ app.delete("/api/menu/:id", ensureAuth, async (req, res) => {
     }
 });
 
+// --- OAuth routes ---
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+app.get("/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/auth/failure" }),
+    (req, res) => {
+        res.send(`<script>
+            window.opener.postMessage({ user: true }, "*");
+            window.close();
+        </script>`);
+    }
+);
+app.get("/auth/failure", (req, res) => res.send("Login Failed"));
+
+// --- Logout route ---
 app.get("/logout", (req, res) => {
     req.logout(err => {
         if (err) return res.status(500).json({ error: "Logout failed" });
@@ -137,33 +135,30 @@ app.get("/logout", (req, res) => {
     });
 });
 
-// --- TEMPORARY: Seed test menu items ---
+// --- Optional: seed route for testing ---
 app.get("/seed-menu", async (req, res) => {
     try {
-        await MenuItem.deleteMany({});
-        await MenuItem.insertMany([
+        const items = [
             { category: "Klasiky", name: "Espresso", gram: "8g", price: "50" },
             { category: "Klasiky", name: "Cappuccino", gram: "8g", price: "60" },
-            { category: "Ledová káva", name: "Espresso tonic", gram: "8g", price: "65" },
-            { category: "Víno", name: "Merlot červené", gram: "0.1l", price: "30" },
-        ]);
+        ];
+        await MenuItem.insertMany(items);
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
 
-// --- Serve React frontend (MUST be last) ---
-if (process.env.NODE_ENV === "production") {
-    const buildPath = path.join(__dirname, "build");
+// --- React build (catch-all) ---
+const buildPath = path.join(__dirname, "build");
+if (fs.existsSync(buildPath)) {
     app.use(express.static(buildPath));
-
     app.get("*", (req, res) => {
         res.sendFile(path.join(buildPath, "index.html"));
     });
 }
 
-// --- Start server ---
+// --- Connect to MongoDB and start server ---
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("✅ DB connected");
