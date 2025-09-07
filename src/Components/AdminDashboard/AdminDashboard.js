@@ -10,6 +10,7 @@ function AdminDashboard() {
 
     const API_URL = process.env.REACT_APP_API_URL;
 
+
     // Fetch logged-in user on mount
     useEffect(() => {
         fetch(`${API_URL}/api/me`, { credentials: "include" })
