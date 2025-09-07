@@ -8,7 +8,7 @@ function AdminDashboard() {
     const [newItem, setNewItem] = useState({ category: "", name: "", price: "" });
     const [newCategory, setNewCategory] = useState("");
 
-    const API_URL = process.env.REACT_APP_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
 
 
     // Fetch logged-in user on mount
