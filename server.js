@@ -16,7 +16,10 @@ const app = express();
 
 // --- Middlewares ---
 app.use(cors({
-    origin: ["https://avantyra.vercel.app"], // frontend URL
+    origin: [
+        "http://localhost:3000",        // React dev
+        "https://avantyra.vercel.app"   // production frontend
+    ],
     credentials: true
 }));
 app.use(express.json());
@@ -131,7 +134,7 @@ if (process.env.NODE_ENV === "production") {
     app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "build", "index.html"));
     });
-});
+};
 
 // --- Connect to MongoDB and start server ---
 mongoose.connect(process.env.MONGO_URI)

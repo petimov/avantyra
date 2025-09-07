@@ -8,10 +8,7 @@ function AdminDashboard() {
     const [newItem, setNewItem] = useState({ category: "", name: "", price: "" });
     const [newCategory, setNewCategory] = useState("");
 
-    // Use dynamic backend URL
-    const API_URL = process.env.NODE_ENV === "production"
-        ? "https://your-backend-url.com"
-        : "http://localhost:4000";
+    const API_URL = process.env.REACT_APP_API_URL;
 
     // Fetch logged-in user on mount
     useEffect(() => {
@@ -107,9 +104,6 @@ function AdminDashboard() {
             .then(() => setUser(null))
             .catch(() => setUser(false));
     }
-
-    // Loading state
-    if (user === null) return <p>Načítání...</p>;
 
     // Login screen
     if (!user) {
