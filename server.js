@@ -134,6 +134,7 @@ app.get("/logout", (req, res) => {
     });
 });
 
+const buildPath = path.join(__dirname, "build");
 console.log("Build folder exists:", fs.existsSync(buildPath));
 
 // Serve React in production if needed
