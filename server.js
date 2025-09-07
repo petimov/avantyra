@@ -7,6 +7,7 @@ import passport from "passport";
 import session from "express-session";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import dotenv from "dotenv";
+import fs from 'fs';
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -132,6 +133,8 @@ app.get("/logout", (req, res) => {
         });
     });
 });
+
+console.log("Build folder exists:", fs.existsSync(buildPath));
 
 // Serve React in production if needed
 // Add this after your API routes but before the React catch-all
