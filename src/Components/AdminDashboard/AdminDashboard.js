@@ -8,7 +8,7 @@ function AdminDashboard() {
     const [newItem, setNewItem] = useState({ category: "", name: "", price: "" });
     const [newCategory, setNewCategory] = useState("");
 
-    const API_URL = (process.env.REACT_APP_API_URL || "http://localhost:4000").replace(/\/+$/, "");
+    const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
 
     console.log("API_URL:", API_URL);
 
