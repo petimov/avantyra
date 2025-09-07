@@ -18,8 +18,9 @@ const app = express();
 // --- Middlewares ---
 app.use(cors({
     origin: [
-        "http://localhost:3000",        // React dev
-        "https://avantyra.vercel.app"   // production frontend
+        "http://localhost:3000",
+        "https://avantyra.vercel.app",
+        "https://avantyra.onrender.com"
     ],
     credentials: true
 }));
