@@ -26,13 +26,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
+app.set("trust proxy", 1);
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: true,
-        sameSite: "none",
+        secure: true,       // must be true in production with HTTPS
+        sameSite: "none",   // allows cross-origin cookies
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
     }
