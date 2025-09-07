@@ -276,6 +276,7 @@ import { animatePhotoScroll } from '../../utils/animations.js';
 const Menu = () => {
     const sectionRef = useRef(null);
     const [menu, setMenu] = useState({}); // <-- object, not array
+    console.log(menu)
 
     useEffect(() => {
         animatePhotoScroll(sectionRef.current);
