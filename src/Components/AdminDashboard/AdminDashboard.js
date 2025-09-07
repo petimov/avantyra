@@ -146,16 +146,20 @@ function AdminDashboard() {
                     onChange={e => setNewItem({ ...newItem, name: e.target.value })}
                 />
                 <input
-                    type="text"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="Gramáž"
+                    value={newItem.dose}
+                    onChange={e => setNewItem({ ...newItem, dose: e.target.value })}
+                />
+                <input
+                    type="number"
+                    min="0"
+                    step="1"
                     placeholder="Cena"
                     value={newItem.price}
                     onChange={e => setNewItem({ ...newItem, price: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Dose / Gramáž"
-                    value={newItem.dose}
-                    onChange={e => setNewItem({ ...newItem, dose: e.target.value })}
                 />
                 <button onClick={addItem}>Přidat položku</button>
             </div>
@@ -166,7 +170,7 @@ function AdminDashboard() {
                     <ul className="admin-menu-list">
                         {items.map(item => (
                             <li key={item._id}>
-                                {item.name} {item.dose && `(${item.dose})`} - {item.price},-
+                                {item.name} {item.dose && `(${item.dose}g)`} - {item.price},-
                                 <button onClick={() => deleteItem(item._id, category)}>Odstranit</button>
                             </li>
                         ))}
