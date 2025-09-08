@@ -11,7 +11,7 @@ import WaveDivider from './Components/WaveDivider/WaveDivider.js';
 import About from './Components/About/About.js'
 import Contact from './Components/Contact/Contact.js';
 import LenisProvider from './Components/LenisProvider.js'
-import AdminDashboard from './Components/AdminDashboard/AdminDashboard.js';
+// import AdminDashboard from './Components/AdminDashboard/AdminDashboard.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,7 +26,7 @@ root.render(
             <Route path='/menu' element={<Menu />} />
             <Route path='/o-nas' element={<About />} />
             <Route path='/kontakt' element={<Contact />} />
-            <Route path='/admin' element={<AdminDashboard />} />
+            {/* <Route path='/admin' element={<AdminDashboard />} /> */}
           </Route>
         </Routes>
         <WaveDivider flipped />
