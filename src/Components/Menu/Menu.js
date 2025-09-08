@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './Menu.css'
-import { animatePhotoScroll } from '../../utils/animations';
+import { animatePhotoScroll } from '../../utils/animations.js';
 
 const Menu = () => {
     const sectionRef = useRef(null);
