@@ -1,184 +1,184 @@
-import React, { useState, useEffect } from "react";
-import './AdminDashboard.css';
+// import React, { useState, useEffect } from "react";
+// import './AdminDashboard.css';
 
-function AdminDashboard() {
-    const [user, setUser] = useState(null); // null = loading, false = failed, object = logged in
-    const [menu, setMenu] = useState({});
-    const [categories, setCategories] = useState([]);
-    const [newItem, setNewItem] = useState({ category: "", name: "", price: "", dose: "" });
-    const [newCategory, setNewCategory] = useState("");
+// function AdminDashboard() {
+//     const [user, setUser] = useState(null); // null = loading, false = failed, object = logged in
+//     const [menu, setMenu] = useState({});
+//     const [categories, setCategories] = useState([]);
+//     const [newItem, setNewItem] = useState({ category: "", name: "", price: "", dose: "" });
+//     const [newCategory, setNewCategory] = useState("");
 
-    const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
+//     const API_URL = process.env.REACT_APP_API_URL.replace(/\/+$/, "");
 
-    useEffect(() => {
-        fetch(`${API_URL}/api/me`, { credentials: "include" })
-            .then(res => res.json())
-            .then(data => {
-                setUser(data.user || false);
-            })
-            .catch(() => setUser(false));
-    }, [API_URL]);
+//     useEffect(() => {
+//         fetch(`${API_URL}/api/me`, { credentials: "include" })
+//             .then(res => res.json())
+//             .then(data => {
+//                 setUser(data.user || false);
+//             })
+//             .catch(() => setUser(false));
+//     }, [API_URL]);
 
-    useEffect(() => {
-        if (!user || user === false) return;
+//     useEffect(() => {
+//         if (!user || user === false) return;
 
-        fetch(`${API_URL}/api/menu`, { credentials: "include" })
-            .then(res => res.json())
-            .then(data => {
-                setMenu(data);
-                setCategories(Object.keys(data));
-            })
-            .catch(err => console.error("Error fetching menu:", err));
-    }, [user, API_URL]);
+//         fetch(`${API_URL}/api/menu`, { credentials: "include" })
+//             .then(res => res.json())
+//             .then(data => {
+//                 setMenu(data);
+//                 setCategories(Object.keys(data));
+//             })
+//             .catch(err => console.error("Error fetching menu:", err));
+//     }, [user, API_URL]);
 
-    // Add new menu item
-    function addItem() {
-        let categoryToUse = newItem.category;
-        if (newItem.category === "__new__") {
-            if (!newCategory.trim()) return alert("Zadejte název kategorie");
-            categoryToUse = newCategory.trim();
-        }
-        if (!newItem.name || !newItem.price) return alert("Zadejte název a cenu");
+//     // Add new menu item
+//     function addItem() {
+//         let categoryToUse = newItem.category;
+//         if (newItem.category === "__new__") {
+//             if (!newCategory.trim()) return alert("Zadejte název kategorie");
+//             categoryToUse = newCategory.trim();
+//         }
+//         if (!newItem.name || !newItem.price) return alert("Zadejte název a cenu");
 
-        fetch(`${API_URL}/api/menu`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({ ...newItem, category: categoryToUse })
-        })
-            .then(res => res.json())
-            .then(data => {
-                setMenu(prev => ({
-                    ...prev,
-                    [data.category]: prev[data.category] ? [...prev[data.category], data] : [data]
-                }));
-                if (!categories.includes(data.category)) setCategories(prev => [...prev, data.category]);
-                setNewItem({ category: "", name: "", price: "", dose: "" });
-                setNewCategory("");
-            })
-            .catch(err => console.error("Chyba při přidávání položky:", err));
-    }
+//         fetch(`${API_URL}/api/menu`, {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             credentials: "include",
+//             body: JSON.stringify({ ...newItem, category: categoryToUse })
+//         })
+//             .then(res => res.json())
+//             .then(data => {
+//                 setMenu(prev => ({
+//                     ...prev,
+//                     [data.category]: prev[data.category] ? [...prev[data.category], data] : [data]
+//                 }));
+//                 if (!categories.includes(data.category)) setCategories(prev => [...prev, data.category]);
+//                 setNewItem({ category: "", name: "", price: "", dose: "" });
+//                 setNewCategory("");
+//             })
+//             .catch(err => console.error("Chyba při přidávání položky:", err));
+//     }
 
-    // Delete menu item
-    function deleteItem(id, category) {
-        fetch(`${API_URL}/api/menu/${id}`, { method: "DELETE", credentials: "include" })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    setMenu(prev => ({
-                        ...prev,
-                        [category]: prev[category].filter(item => item._id !== id)
-                    }));
-                }
-            })
-            .catch(err => console.error("Chyba při mazání položky:", err));
-    }
+//     // Delete menu item
+//     function deleteItem(id, category) {
+//         fetch(`${API_URL}/api/menu/${id}`, { method: "DELETE", credentials: "include" })
+//             .then(res => res.json())
+//             .then(result => {
+//                 if (result.success) {
+//                     setMenu(prev => ({
+//                         ...prev,
+//                         [category]: prev[category].filter(item => item._id !== id)
+//                     }));
+//                 }
+//             })
+//             .catch(err => console.error("Chyba při mazání položky:", err));
+//     }
 
-    // Open Google login popup
-    function openGoogleLogin() {
-        const width = 500, height = 600;
-        const left = window.innerWidth / 2 - width / 2;
-        const top = window.innerHeight / 2 - height / 2;
+//     // Open Google login popup
+//     function openGoogleLogin() {
+//         const width = 500, height = 600;
+//         const left = window.innerWidth / 2 - width / 2;
+//         const top = window.innerHeight / 2 - height / 2;
 
-        const popup = window.open(
-            `${API_URL}/auth/google`,
-            "Google Login",
-            `width=${width},height=${height},top=${top},left=${left}`
-        );
+//         const popup = window.open(
+//             `${API_URL}/auth/google`,
+//             "Google Login",
+//             `width=${width},height=${height},top=${top},left=${left}`
+//         );
 
-        const timer = setInterval(() => {
-            try {
-                if (popup.closed) {
-                    clearInterval(timer);
-                    fetch(`${API_URL}/api/me`, { credentials: "include" })
-                        .then(res => res.json())
-                        .then(data => setUser(data.user ? data.user : false))
-                        .catch(() => setUser(false));
-                }
-            } catch (err) { }
-        }, 500);
-    }
+//         const timer = setInterval(() => {
+//             try {
+//                 if (popup.closed) {
+//                     clearInterval(timer);
+//                     fetch(`${API_URL}/api/me`, { credentials: "include" })
+//                         .then(res => res.json())
+//                         .then(data => setUser(data.user ? data.user : false))
+//                         .catch(() => setUser(false));
+//                 }
+//             } catch (err) { }
+//         }, 500);
+//     }
 
-    // Logout
-    function logout() {
-        fetch(`${API_URL}/logout`, { credentials: "include" })
-            .then(() => setUser(null))
-            .catch(() => setUser(false));
-    }
+//     // Logout
+//     function logout() {
+//         fetch(`${API_URL}/logout`, { credentials: "include" })
+//             .then(() => setUser(null))
+//             .catch(() => setUser(false));
+//     }
 
-    if (!user) {
-        return (
-            <div className="admin-login">
-                <h1>Přihlášení</h1>
-                <button onClick={openGoogleLogin}>Přihlásit se pomocí Google</button>
-            </div>
-        );
-    }
+//     if (!user) {
+//         return (
+//             <div className="admin-login">
+//                 <h1>Přihlášení</h1>
+//                 <button onClick={openGoogleLogin}>Přihlásit se pomocí Google</button>
+//             </div>
+//         );
+//     }
 
-    return (
-        <div className="admin-content">
-            <h1>Správa menu</h1>
-            <button onClick={logout}>Odhlásit se</button>
+//     return (
+//         <div className="admin-content">
+//             <h1>Správa menu</h1>
+//             <button onClick={logout}>Odhlásit se</button>
 
-            <div className="admin-form">
-                <select
-                    value={newItem.category}
-                    onChange={e => setNewItem({ ...newItem, category: e.target.value })}
-                >
-                    <option value="">Vybrat kategorii</option>
-                    {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                    <option value="__new__">+ Přidat novou kategorii</option>
-                </select>
+//             <div className="admin-form">
+//                 <select
+//                     value={newItem.category}
+//                     onChange={e => setNewItem({ ...newItem, category: e.target.value })}
+//                 >
+//                     <option value="">Vybrat kategorii</option>
+//                     {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+//                     <option value="__new__">+ Přidat novou kategorii</option>
+//                 </select>
 
-                {newItem.category === "__new__" && (
-                    <input
-                        type="text"
-                        placeholder="Nová kategorie"
-                        value={newCategory}
-                        onChange={e => setNewCategory(e.target.value)}
-                    />
-                )}
+//                 {newItem.category === "__new__" && (
+//                     <input
+//                         type="text"
+//                         placeholder="Nová kategorie"
+//                         value={newCategory}
+//                         onChange={e => setNewCategory(e.target.value)}
+//                     />
+//                 )}
 
-                <input
-                    type="text"
-                    placeholder="Název položky"
-                    value={newItem.name}
-                    onChange={e => setNewItem({ ...newItem, name: e.target.value })}
-                />
-                <input
-                    type="number"
-                    min="0"
-                    step="1"
-                    placeholder="Gramáž"
-                    value={newItem.dose}
-                    onChange={e => setNewItem({ ...newItem, dose: e.target.value })}
-                />
-                <input
-                    type="number"
-                    min="0"
-                    step="1"
-                    placeholder="Cena"
-                    value={newItem.price}
-                    onChange={e => setNewItem({ ...newItem, price: e.target.value })}
-                />
-                <button onClick={addItem}>Přidat položku</button>
-            </div>
+//                 <input
+//                     type="text"
+//                     placeholder="Název položky"
+//                     value={newItem.name}
+//                     onChange={e => setNewItem({ ...newItem, name: e.target.value })}
+//                 />
+//                 <input
+//                     type="number"
+//                     min="0"
+//                     step="1"
+//                     placeholder="Gramáž"
+//                     value={newItem.dose}
+//                     onChange={e => setNewItem({ ...newItem, dose: e.target.value })}
+//                 />
+//                 <input
+//                     type="number"
+//                     min="0"
+//                     step="1"
+//                     placeholder="Cena"
+//                     value={newItem.price}
+//                     onChange={e => setNewItem({ ...newItem, price: e.target.value })}
+//                 />
+//                 <button onClick={addItem}>Přidat položku</button>
+//             </div>
 
-            {Object.entries(menu).map(([category, items]) => (
-                <div key={category} className="admin-menu-category">
-                    <h2>{category}</h2>
-                    <ul className="admin-menu-list">
-                        {items.map(item => (
-                            <li key={item._id}>
-                                {item.name} {item.dose && `(${item.dose}g)`} - {item.price},-
-                                <button onClick={() => deleteItem(item._id, category)}>Odstranit</button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            ))}
-        </div>
-    );
-}
+//             {Object.entries(menu).map(([category, items]) => (
+//                 <div key={category} className="admin-menu-category">
+//                     <h2>{category}</h2>
+//                     <ul className="admin-menu-list">
+//                         {items.map(item => (
+//                             <li key={item._id}>
+//                                 {item.name} {item.dose && `(${item.dose}g)`} - {item.price},-
+//                                 <button onClick={() => deleteItem(item._id, category)}>Odstranit</button>
+//                             </li>
+//                         ))}
+//                     </ul>
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// }
 
-export default AdminDashboard;
+// export default AdminDashboard;
